@@ -1,5 +1,11 @@
 name: Build and Deploy Code
-on: [push, pull_rquest]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   job1:
     runs-on: ubuntu-latest
