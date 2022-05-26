@@ -1,5 +1,7 @@
 name: Build and Deploy Code
+
 on: [push, pull_rquest]
+
 jobs:
   job1:
     runs-on: ubuntu-latest
