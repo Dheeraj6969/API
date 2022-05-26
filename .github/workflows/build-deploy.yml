@@ -2,9 +2,9 @@ name: Build and Deploy Code
 on: [push, pull_rquest]
 jobs:
   job1:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: say hi to dheeraj
         run: echo "hello dheeraj"
