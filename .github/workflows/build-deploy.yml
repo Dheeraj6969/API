@@ -12,5 +12,11 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v3
-      - name: say hi to dheeraj
-        run: echo "hello dheeraj"
+      - name: install python version 3.10
+        uses: actions/setup-version@v3
+        with:
+          python-version:"3.10"
+      - name: upgrade pip
+        run: python -m pip install --upgrade pip
+      - name: install all dependencies
+        run: pip install -r requirements.tx
