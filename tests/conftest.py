@@ -1,17 +1,13 @@
 from fastapi.testclient import TestClient
 from app.main import app
-#from app import schemas
 from app.database import get_db, Base
 from app.config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-#from sqlalchemy.ext.declarative import declarative_base
 import pytest
 from app.oauth2 import create_access_token
 from app import model
-#from alembic import command
 
-#SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:dheeraj@localhost:5432/fastapi_test'
 SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}_test"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
@@ -29,8 +25,6 @@ def session():
 
 @pytest.fixture()
 def client(session):
-    #command.upgrade("head")
-    #command.downgrade("base")
     def override_get_db():
         try:
             yield session
@@ -95,9 +89,6 @@ def test_posts(test_user, session, test_user2):
     post_map = map(create_post_model, posts_data)
     posts = list(post_map)
     session.add_all(posts)
-    #session.add_all([model.Post(title="first title", content="first content", owner_id=test_user['id']),
-                    #  model.Post(title="2nd title", content="2nd content", owner_id=test_user['id']),
-                    #  model.Post(title="3rd title", content="3rd content", owner_id=test_user['id'])])
     session.commit()
     post = session.query(model.Post).all()
     return post

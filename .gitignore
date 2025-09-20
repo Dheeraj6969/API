@@ -1,5 +1,9 @@
 __pycache__
 myvenv/
 .env
-.gitignore/
 .vscode/
+.github/
+0.2.2
+alembic.ini
+py
+alembic/versions/

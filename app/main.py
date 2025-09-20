@@ -1,8 +1,5 @@
 from fastapi import FastAPI
-from . import model
-from .database import engine
 from .routers import post, users, auth, vote
-from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
 
 #model.Base.metadata.create_all(bind=engine) //without alembic
