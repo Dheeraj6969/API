@@ -7,3 +7,6 @@ myvenv/
 alembic.ini
 py
 alembic/versions/
+results.txt
+Procfile
+venv/
