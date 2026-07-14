@@ -53,23 +53,7 @@ db_name = abc
 test_db_name = abc_test 
 ````
 
-Then run the application
-````
-
-uvicorn app.main:app --reload
-
-````
-
-Then you can use following link to use the  API
-
-````
-
-http://127.0.0.1:8000/docs 
-
-````
-
-## After run this API you need a database in postgres 
-Create a database in postgres then create a file name .env similar to .env.example and write the following things in you file 
+Create a file name .env similar to .env.example and write the following things in you file 
 
 ````
 DATABASE_HOSTNAME = localhost
@@ -82,4 +66,32 @@ ALGORITHM = HS256
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 ````
+
 ### Note: SECRET_KEY in this exmple is just a psudo key. You need to get a key for youself.
+
+Then run migrations and upgrade head
+````
+alembic revision --autogenerate -m "First Migration"
+alembic upgrade head   
+````
+
+Then run the application
+````
+
+uvicorn app.main:app --reload
+
+````
+
+Then you can use following link to use the  API
+
+````
+http://127.0.0.1:8000/docs
+
+localhost:8000/docs
+````
+
+## Run the Tests
+
+````
+pytest
+````
